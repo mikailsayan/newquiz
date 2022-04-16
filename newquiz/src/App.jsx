@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Card from "./components/Card"
 import fetchQuestions from "./components/Fetch";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function App() {
   const url = "https://opentdb.com/api.php?amount=10";
@@ -31,17 +32,17 @@ export default function App() {
           );
         })}
       </MainStyle>
+      <Footer/>
     </>
   );
 }
-
-
 
 const Headline2 = styled.h2`
   background-color: white;
   padding: 10px;
   border-radius: 10px;
   border: 5px solid black;
+  font-family: Alfa Slab One;
 `;
 
 const MainStyle = styled.main`

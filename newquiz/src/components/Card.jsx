@@ -29,6 +29,7 @@ const CardStyle = styled.section`
   margin-top: 20px;
   padding: 20px;
   transition: 0.5s;
+  box-shadow: 0px 0px 25px black;
 
   @media (min-width: 700px) {
       width: 450px;
@@ -41,6 +42,7 @@ const CardStyle = styled.section`
   h2 {
     margin-top: 10px;
     text-align: center;
+    font-family: Alfa Slab One;
   }
 
   p {

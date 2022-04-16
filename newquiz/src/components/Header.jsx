@@ -3,13 +3,13 @@ import styled from "styled-components";
 export default function Header() {
     return (
         <HeaderStyle>
-        <h1>Quizzle</h1>
-      </HeaderStyle>
-    )
+            <h1>Quizzle</h1>
+        </HeaderStyle>
+    ) 
 }
 
 const HeaderStyle = styled.header`
-position: fixed;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,5 +19,6 @@ position: fixed;
 
   h1 {
     color: white;
+    font-family: Abril Fatface;
   }
 `;
