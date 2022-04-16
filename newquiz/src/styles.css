@@ -1,9 +1,10 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: white;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("https://www.design.svgbackgrounds.com/wp-content/uploads/2021/05/protruding-squares-orange-background.png");
+  background-attachment: fixed;
+}
