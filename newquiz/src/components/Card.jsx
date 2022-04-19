@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import { useState } from 'react'
 
-export default function Card({ question, answer, incorrect }) {
+export default function Card({ question, answer, incorrect, headlinecount }) {
+  const [showeAnswer, setshoweAnswer] = useState(false);
+
   return (
     <CardStyle>
       <article>
-        <h2>Question 1</h2>
+        <h2>Question {headlinecount}</h2>
         <p>{question}</p>
       </article>
       <ChoiceStyle>
@@ -14,8 +17,10 @@ export default function Card({ question, answer, incorrect }) {
         <li>{incorrect[2]}</li>
       </ChoiceStyle>
       <ButtonDiv>
-        <button type="button">Show Answer</button>
-        <p>{answer}</p>
+        <button type="button" onClick={() => {
+          setshoweAnswer(!showeAnswer);
+        }}>{showeAnswer ? "Hide Answer" : "Show Answer"}</button>
+        <p>{showeAnswer ? answer : ""}</p>
       </ButtonDiv>
     </CardStyle>
   );

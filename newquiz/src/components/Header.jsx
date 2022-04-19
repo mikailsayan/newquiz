@@ -16,6 +16,7 @@ const HeaderStyle = styled.header`
   width: 100vw;
   height: 60px;
   background-color: black;
+  z-index: 10;
 
   h1 {
     color: white;

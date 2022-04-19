@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 export default function App() {
   const url = "https://opentdb.com/api.php?amount=10";
   const [questions, setQuestions] = useState([]);
+  let count = 1;
 
   useEffect(() => {
     fetchQuestions(url, (data) => {
@@ -28,6 +29,7 @@ export default function App() {
               question={question}
               answer={correct_answer}
               incorrect={incorrect_answers}
+              headlinecount={count++}
             ></Card>
           );
         })}
@@ -46,7 +48,7 @@ const Headline2 = styled.h2`
 `;
 
 const MainStyle = styled.main`
-  padding: 70px 0 0 0;
+  padding: 70px 0 100px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
