@@ -9,7 +9,6 @@ import Footer from "./components/Footer";
 export default function App() {
   const url = "https://opentdb.com/api.php?amount=10";
   const [questions, setQuestions] = useState([]);
-  let count = 1;
 
   useEffect(() => {
     fetchQuestions(url, (data) => {
@@ -22,14 +21,15 @@ export default function App() {
       <Header/>
       <MainStyle>
         <Headline2>Answer these questions!</Headline2>
-        {questions.map(({ question, correct_answer, incorrect_answers }) => {
+        {questions.map(({ question, correct_answer, incorrect_answers, type }, index) => {
           return (
             <Card
               key={question}
               question={question}
               answer={correct_answer}
               incorrect={incorrect_answers}
-              headlinecount={count++}
+              headlinecount={index+1}
+              qtype={type}
             ></Card>
           );
         })}

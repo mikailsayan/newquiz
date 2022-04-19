@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useState } from 'react'
+import Button from "./Button";
 
-export default function Card({ question, answer, incorrect, headlinecount }) {
-  const [showeAnswer, setshoweAnswer] = useState(false);
+export default function Card({ question, answer, incorrect, headlinecount, qtype }) {
+  const [showAnswer, setshowAnswer] = useState(false);
 
   return (
     <CardStyle>
@@ -13,20 +14,22 @@ export default function Card({ question, answer, incorrect, headlinecount }) {
       <ChoiceStyle>
         <li>{incorrect[0]}</li>
         <li>{answer}</li>
-        <li>{incorrect[1]}</li>
-        <li>{incorrect[2]}</li>
+        <li>{qtype === "multiple" ? incorrect[1] : "-"}</li>
+        <li>{qtype === "multiple" ? incorrect[2] : "-"}</li>
       </ChoiceStyle>
-      <ButtonDiv>
-        <button type="button" onClick={() => {
-          setshoweAnswer(!showeAnswer);
-        }}>{showeAnswer ? "Hide Answer" : "Show Answer"}</button>
-        <p>{showeAnswer ? answer : ""}</p>
-      </ButtonDiv>
+          <Button onClick={() => {
+            setshowAnswer(!showAnswer);
+            }}>{showAnswer ? "Hide Answer" : "Show Answer"}
+          </Button>
+        <p>{showAnswer ? answer : ""}</p>
     </CardStyle>
   );
 }
 
 const CardStyle = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #e5e5e5;
   border: 5px solid black;
   border-radius: 10px;
@@ -44,6 +47,10 @@ const CardStyle = styled.section`
     width: 600px;
 }
 
+  Button {
+    margin-top: 20px;
+  }
+
   h2 {
     margin-top: 10px;
     text-align: center;
@@ -55,24 +62,6 @@ const CardStyle = styled.section`
     font-size: 20px;
   }
 
-  button {
-    margin-top: 20px;
-    padding: 5px 30px 5px 30px;
-    font-size: 16px;
-    border: 4px solid #f27200;
-    border-radius: 10px;
-    transition: 0.3s;
-  }
-
-  button:hover {
-    transform: scale(1.05, 1.05);
-  }
-`;
-
-const ButtonDiv = styled.article`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const ChoiceStyle = styled.ul`
