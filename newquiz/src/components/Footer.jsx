@@ -43,7 +43,7 @@ const FooterStyle = styled.footer`
 
 const UlStyle = styled.ul`
   display: flex;
-  gap: 85px;
+  gap: 70px;
   list-style-type: none
 `;
 
