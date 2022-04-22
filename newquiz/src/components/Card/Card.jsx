@@ -1,9 +1,20 @@
 import styled from "styled-components";
-import { useState } from 'react'
 import Button from "../Button/Button";
+import useToggle from "../Hooks/useToggle";
 
-export default function Card({ question, answer, incorrect, headlinecount, qtype }) {
-  const [showAnswer, setshowAnswer] = useState(false);
+export default function Card({ question, answer, incorrect, headlinecount}) {
+  const [showAnswer, setshowAnswer] = useToggle(false);
+
+  //Funktion für Randomreihenfolge der Antworten
+  function RandomInt(maxNumber) {
+    return Math.floor(Math.random() * maxNumber);
+  }
+
+  const falseAnswers = RandomInt(incorrect.length);
+  let choices = [...incorrect];
+  choices.splice(falseAnswers, 0, answer);
+  const result = choices;
+
 
   return (
     <CardStyle>
@@ -12,14 +23,10 @@ export default function Card({ question, answer, incorrect, headlinecount, qtype
         <p>{question}</p>
       </article>
       <ChoiceStyle>
-        <li>{incorrect[0]}</li>
-        <li>{answer}</li>
-        <li>{qtype === "multiple" ? incorrect[1] : "-"}</li>
-        <li>{qtype === "multiple" ? incorrect[2] : "-"}</li>
+        <li>{result}</li>
       </ChoiceStyle>
-          <Button onClick={() => {
-            setshowAnswer(!showAnswer);
-            }}>{showAnswer ? "Hide Answer" : "Show Answer"}
+          <Button onClick={setshowAnswer}>
+            {showAnswer ? "Hide Answer" : "Show Answer"}
           </Button>
         <p>{showAnswer ? answer : ""}</p>
     </CardStyle>
@@ -55,6 +62,7 @@ const CardStyle = styled.section`
     margin-top: 10px;
     text-align: center;
     font-family: Alfa Slab One;
+    font-size: 30px;
   }
 
   p {
