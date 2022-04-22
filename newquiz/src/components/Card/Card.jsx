@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from 'react'
-import Button from "./Button";
+import Button from "../Button/Button";
 
 export default function Card({ question, answer, incorrect, headlinecount, qtype }) {
   const [showAnswer, setshowAnswer] = useState(false);
