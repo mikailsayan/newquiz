@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Button from "../Button/Button";
 import useToggle from "../Hooks/useToggle";
 
-export default function Card({ question, answer, incorrect, headlinecount}) {
+export default function Card({ question, answer, incorrect, headlinecount, qtype}) {
   const [showAnswer, setshowAnswer] = useToggle(false);
 
   //Funktion für Randomreihenfolge der Antworten
@@ -22,9 +22,21 @@ export default function Card({ question, answer, incorrect, headlinecount}) {
         <h2>Question {headlinecount}</h2>
         <p>{question}</p>
       </article>
+      {qtype === "multiple" 
+      ? 
       <ChoiceStyle>
-        <li>{result}</li>
+        <li>{result[0]}</li>
+        <li>{result[1]}</li>
+        <li>{result[2]}</li>
+        <li>{result[3]}</li>
       </ChoiceStyle>
+      :
+      <ChoiceStyle>
+        <li>{result[0]}</li>
+        <li>{result[1]}</li>
+      </ChoiceStyle>
+    }
+      
           <Button onClick={setshowAnswer}>
             {showAnswer ? "Hide Answer" : "Show Answer"}
           </Button>
