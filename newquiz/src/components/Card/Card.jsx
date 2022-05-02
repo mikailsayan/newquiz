@@ -4,6 +4,7 @@ import useToggle from "../Hooks/useToggle";
 
 export default function Card({ question, answer, incorrect, headlinecount, qtype}) {
   const [showAnswer, setshowAnswer] = useToggle(false);
+  const [bookmarked, setBookmarked] = useToggle(false);
 
   //Funktion für Randomreihenfolge der Antworten
   function RandomInt(maxNumber) {
@@ -36,16 +37,28 @@ export default function Card({ question, answer, incorrect, headlinecount, qtype
         <li>{result[1]}</li>
       </ChoiceStyle>
     }
-      
-          <Button onClick={setshowAnswer}>
-            {showAnswer ? "Hide Answer" : "Show Answer"}
-          </Button>
-        <p>{showAnswer ? answer : ""}</p>
+      <Button onClick={setshowAnswer}>
+        {showAnswer ? "Hide Answer" : "Show Answer"}
+      </Button>
+      <p>{showAnswer ? answer : ""}</p>
+      <div onClick={setBookmarked}>
+        {bookmarked
+        ?
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor" d="M17,18L12,15.82L7,18V5H17M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z" />
+        </svg>
+        :
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor" d="M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z" />
+        </svg>
+        }
+      </div>
     </CardStyle>
   );
 }
 
 const CardStyle = styled.section`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,6 +95,14 @@ const CardStyle = styled.section`
     font-size: 20px;
   }
 
+  svg {
+    position: absolute;
+    left: 86%;
+    top: -5%;
+    width: 45px;
+    height: 45px;
+    z-index: 10;
+  }
 `;
 
 const ChoiceStyle = styled.ul`
@@ -93,7 +114,7 @@ const ChoiceStyle = styled.ul`
 
   li {
     width: 200px;
-    border: 2px solid #f27200;
+    border: 3px solid #f27200;
     padding: 5px;
     font-size: 19px;
     border-radius: 5px;

@@ -29,6 +29,7 @@ export default function Footer() {
     )
 }
 
+
 const FooterStyle = styled.footer`
   display: flex;
   align-items: center;
@@ -39,6 +40,7 @@ const FooterStyle = styled.footer`
   background-color: black;
   bottom: 0;
   color: white;
+  z-index: 11;
 `;
 
 const UlStyle = styled.ul`
@@ -48,6 +50,24 @@ const UlStyle = styled.ul`
 `;
 
 const SVGStyle = styled.svg`
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
+
+  background-image: linear-gradient(
+    transparent 0%,
+    transparent 90%,
+    orange 90%,
+    orange 100%
+  );
+
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-postion-x: right;
+
+  transition: background-size 300ms;
+
+  &:hover {
+  background-size: 100% 100%;
+  background-position-x: left;
+  }
 `

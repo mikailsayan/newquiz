@@ -15,6 +15,6 @@ export default function Button({onClick, children}) {
     transition: 0.3s;
 
   &:hover {
-    transform: scale(1.05, 1.05);
+    transform: scale(1.08, 1.08);
   }
 `;
